@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex e Sam 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="images/heart-solid-full.svg">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="petals-bg" id="petals"></div>
+
+<nav>
+  <a href="#splash" class="nav-home" onclick="return navGoHome();">
+    <span class="nav-name-a">Alex</span>
+    <span class="nav-heart">♥</span>
+    <span class="nav-name-b">Sam</span>
+  </a>
+  <span class="nav-brand">amor &amp; memórias</span>
+</nav>
+
+<!-- Splash Hero -->
+<section class="splash-hero" id="splash">
+  <div class="splash-inner">
+    <span class="splash-label">12 de Junho · Dia dos Namorados</span>
+    <div class="splash-names">
+      <span class="splash-name splash-name--a">Alex</span>
+      <span class="splash-amp">&amp;</span>
+      <span class="splash-name splash-name--b">Sam</span>
+    </div>
+    <p class="splash-sub">dois corações, uma só história</p>
+    <a href="#hero" class="splash-scroll">
+      <span class="splash-scroll-label">explorar</span>
+      <span class="splash-scroll-arrow">↓</span>
+    </a>
+  </div>
+</section>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-badge">Desde 10 · 03 · 2023</div>
+  <h1>Cada momento<br>ao seu lado é<br><em>especial</em></h1>
+  <p>Um cantinho feito para guardar o que já vivemos e sonhar com o que ainda vamos viver.</p>
+  <div class="hero-hearts">
+    <span>💕</span><span>💗</span><span>💕</span>
+  </div>
+  <div class="hero-timer">
+    <span class="timer-tagline">Juntos há</span>
+    <div class="timer-display" id="timerDisplay">
+      <div class="timer-unit" data-unit="years" onclick="toggleTimerUnit('years')">
+        <span class="timer-num" id="timerYears">01</span>
+        <span class="timer-lbl">anos</span>
+      </div>
+      <span class="timer-sep" data-sep="months">:</span>
+      <div class="timer-unit" data-unit="months" onclick="toggleTimerUnit('months')">
+        <span class="timer-num" id="timerMonths">04</span>
+        <span class="timer-lbl">meses</span>
+      </div>
+      <span class="timer-sep" data-sep="days">:</span>
+      <div class="timer-unit" data-unit="days" onclick="toggleTimerUnit('days')">
+        <span class="timer-num" id="timerDays">17</span>
+        <span class="timer-lbl">dias</span>
+      </div>
+      <span class="timer-sep" data-sep="hours">:</span>
+      <div class="timer-unit" data-unit="hours" onclick="toggleTimerUnit('hours')">
+        <span class="timer-num" id="timerHours">00</span>
+        <span class="timer-lbl">horas</span>
+      </div>
+      <span class="timer-sep" data-sep="mins">:</span>
+      <div class="timer-unit" data-unit="mins" onclick="toggleTimerUnit('mins')">
+        <span class="timer-num" id="timerMins">00</span>
+        <span class="timer-lbl">minutos</span>
+      </div>
+      <span class="timer-sep" data-sep="secs">:</span>
+      <div class="timer-unit" data-unit="secs" onclick="toggleTimerUnit('secs')">
+        <span class="timer-num" id="timerSecs">00</span>
+        <span class="timer-lbl">segundos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spotify Section (logo abaixo do timer) -->
+<section id="musicas" class="spotify-section">
+  <div class="container">
+    <span class="section-label reveal">Nossa trilha sonora</span>
+    <h2 class="section-title reveal">As músicas que<br><em>nos definem</em></h2>
+    <p class="section-sub reveal">As canções que tocaram enquanto a gente se apaixonava.</p>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-heart">♥</div>
+      <div class="divider-line"></div>
+    </div>
+    <div class="spotify-embed reveal">
+      <!--
+        Para adicionar sua playlist do Spotify:
+        1. Abra a playlist no Spotify
+        2. Clique nos três pontos (...) → Compartilhar → Copiar link da playlist
+        3. O link terá o formato: https://open.spotify.com/playlist/PLAYLIST_ID
+        4. Substitua PLAYLIST_ID_AQUI abaixo pelo ID da sua playlist
+      -->
+      <iframe
+        style="border-radius:16px"
+        src="https://open.spotify.com/embed/playlist/PLAYLIST_ID_AQUI?utm_source=generator&theme=0"
+        width="100%"
+        height="380"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Scrapbook / Clothesline Section -->
+<section id="fotos" class="scrapbook-section">
+  <div class="container">
+    <span class="section-label reveal">Nosso álbum</span>
+    <h2 class="section-title reveal">Memórias fixadas<br><em>no coração</em></h2>
+    <div class="sb-cupid-area reveal" id="sbCupidArea">
+      <span class="sb-cupid-label" id="sbCupidHint">aperte para atirar</span>
+      <button class="sb-cupid-btn" id="sbCupidBtn" aria-label="Atirar flecha">
+        <img src="images/cupid.png" alt="Cupido" class="sb-cupid-icon">
+      </button>
+    </div>
+    <div class="sb-lock-row">
+      <div class="divider-line"></div>
+      <div class="sb-lock" id="sbLock">
+        <img src="images/heart.png" alt="" class="sb-lock-heart" id="sbLockHeart">
+      </div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="sb-drawer" id="sbDrawer">
+      <div class="sb-drawer-inner">
+    <div class="scrapbook">
+      <div class="scrapbook__pole"></div>
+
+      <!-- Card 1: Left — base aponta para fora (rot positivo) -->
+      <div class="sb-row sb-row--left">
+        <div class="polaroid" style="--rot:4deg">
+          <div class="polaroid__hole"></div>
+          <div class="polaroid__img" style="background:linear-gradient(135deg,#fde8f0,#ffc0d8)">🌸</div>
+          <div class="polaroid__caption">
+            <strong class="polaroid__title">O começo de tudo</strong>
+            <span class="polaroid__date">Março 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Right — base aponta para fora (rot negativo) -->
+      <div class="sb-row sb-row--right">
+        <div class="polaroid" style="--rot:-3deg">
+          <div class="polaroid__hole"></div>
+          <div class="polaroid__img" style="background:linear-gradient(135deg,#ffe0ec,#f9a8c9)">🌷</div>
+          <div class="polaroid__caption">
+            <strong class="polaroid__title">Café para dois ♥</strong>
+            <span class="polaroid__date">Maio 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Left -->
+      <div class="sb-row sb-row--left">
+        <div class="polaroid" style="--rot:2deg">
+          <div class="polaroid__hole"></div>
+          <div class="polaroid__img" style="background:linear-gradient(135deg,#fff0f6,#ffd6e7)">🦋</div>
+          <div class="polaroid__caption">
+            <strong class="polaroid__title">Tarde de domingo</strong>
+            <span class="polaroid__date">Agosto 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Right -->
+      <div class="sb-row sb-row--right">
+        <div class="polaroid" style="--rot:-5deg">
+          <div class="polaroid__hole"></div>
+          <div class="polaroid__img" style="background:linear-gradient(135deg,#fce4ee,#e8b4b8)">🌹</div>
+          <div class="polaroid__caption">
+            <strong class="polaroid__title">Pé na estrada</strong>
+            <span class="polaroid__date">Novembro 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Left -->
+      <div class="sb-row sb-row--left">
+        <div class="polaroid" style="--rot:5deg">
+          <div class="polaroid__hole"></div>
+          <div class="polaroid__img" style="background:linear-gradient(135deg,#ffd6e7,#ffc0cb)">🎀</div>
+          <div class="polaroid__caption">
+            <strong class="polaroid__title">Uma surpresa daquelas</strong>
+            <span class="polaroid__date">Janeiro 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Right -->
+      <div class="sb-row sb-row--right">
+        <div class="polaroid" style="--rot:-4deg">
+          <div class="polaroid__hole"></div>
+          <div class="polaroid__img" style="background:linear-gradient(135deg,#fde8f0,#ffc0d8)">💐</div>
+          <div class="polaroid__caption">
+            <strong class="polaroid__title">Primeiro de muitos anos</strong>
+            <span class="polaroid__date">Março 2024</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+      <div class="sb-collapse-footer">
+        <button class="sb-collapse-btn" id="sbCollapseBtn">↑ recolher</button>
+      </div>
+      </div><!-- /.sb-drawer-inner -->
+    </div><!-- /.sb-drawer -->
+  </div>
+</section>
+
+<!-- Carousel / Gallery Section -->
+<section id="galeria" class="carousel-section">
+  <div class="container">
+    <span class="section-label reveal">Nossa galeria</span>
+    <h2 class="section-title reveal">Todos os<br><em>momentos juntos</em></h2>
+    <p class="section-sub reveal">Um passeio pelos instantes que mais gostamos de lembrar.</p>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-heart">♥</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="carousel-wrap reveal">
+      <button class="carousel-btn carousel-btn--prev" onclick="moveCarousel(-1)" aria-label="Anterior">‹</button>
+      <button class="carousel-btn carousel-btn--next" onclick="moveCarousel(1)" aria-label="Próximo">›</button>
+
+      <div class="carousel">
+        <div class="carousel-track" id="carouselTrack">
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#fde8f0,#ffc0d8)">🌸</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Abril 2023</span>
+                <div class="carousel-slide__title">Primeiras risadas</div>
+                <p class="carousel-slide__desc">Quando a conversa não queria acabar ♥</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#ffe0ec,#f9a8c9)">🌷</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Junho 2023</span>
+                <div class="carousel-slide__title">Noite de gala</div>
+                <p class="carousel-slide__desc">Bem arrumadinhos para comemorar</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#fff0f6,#ffd6e7)">🦋</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Setembro 2023</span>
+                <div class="carousel-slide__title">Domingo preguiçoso</div>
+                <p class="carousel-slide__desc">Cobertor, chá e nenhuma pressa</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#fce4ee,#e8b4b8)">🌹</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Outubro 2023</span>
+                <div class="carousel-slide__title">Sessão de cinema</div>
+                <p class="carousel-slide__desc">Pipoca dividida e mãos dadas ♥</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#ffd6e7,#ffc0cb)">🎀</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Dezembro 2023</span>
+                <div class="carousel-slide__title">Ceia de fim de ano</div>
+                <p class="carousel-slide__desc">Brindando a tudo que ainda vem.</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#fde8f0,#ffc0d8)">🍓</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Fevereiro 2024</span>
+                <div class="carousel-slide__title">Piquenique no parque</div>
+                <p class="carousel-slide__desc">Morangos, sol e boa companhia ♥</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#ffe0ec,#f9a8c9)">🧁</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Abril 2024</span>
+                <div class="carousel-slide__title">Confeiteiros de primeira viagem</div>
+                <p class="carousel-slide__desc">A receita deu errado, a tarde deu certo 😄</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#fff0f6,#ffd6e7)">💌</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Julho 2024</span>
+                <div class="carousel-slide__title">Bilhetinhos</div>
+                <p class="carousel-slide__desc">Recadinhos escondidos pela casa 🩷</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#fce4ee,#e8b4b8)">🌙</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Setembro 2024</span>
+                <div class="carousel-slide__title">Noite estrelada</div>
+                <p class="carousel-slide__desc">Contando estrelas até perder a conta</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#ffd6e7,#ffc0cb)">🌺</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Dezembro 2024</span>
+                <div class="carousel-slide__title">Casa cheia</div>
+                <p class="carousel-slide__desc">Família, amigos e muito carinho ♥</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-slide__img" style="background:linear-gradient(135deg,#fde8f0,#ffc0d8)">🕊️</div>
+            <div class="carousel-slide__body">
+              <div>
+                <span class="carousel-slide__date">Maio 2025</span>
+                <div class="carousel-slide__title">Novos horizontes</div>
+                <p class="carousel-slide__desc">Rumo ao próximo capítulo 😊💕</p>
+              </div>
+              <button class="carousel-slide__like" onclick="toggleLike(this)">♡</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Story Section -->
+<section id="historia" class="story-section">
+  <div class="container">
+    <div class="story-grid">
+      <div>
+        <span class="section-label reveal">Nossa história</span>
+        <h2 class="section-title reveal">O amor em uma<br><em>linha do tempo</em></h2>
+        <p class="section-sub reveal">Página por página, escrevemos juntos algo que vale a pena reler.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item" style="animation-delay:0.1s">
+          <div class="timeline-date">Era uma vez</div>
+          <div class="timeline-title">Um olhar atravessado</div>
+          <p class="timeline-body">Um sorriso tímido, uma conversa que se estendeu e a sensação de que algo bom estava começando.</p>
+        </div>
+        <div class="timeline-item" style="animation-delay:0.25s">
+          <div class="timeline-date">Pouco depois</div>
+          <div class="timeline-title">As palavras certas</div>
+          <p class="timeline-body">Aquilo que o coração já sabia finalmente ganhou voz, meio sem jeito e completamente sincero.</p>
+        </div>
+        <div class="timeline-item" style="animation-delay:0.4s">
+          <div class="timeline-date">Uma volta ao sol</div>
+          <div class="timeline-title">Primeira comemoração</div>
+          <p class="timeline-body">Um ano inteiro de risadas, planos rabiscados e pequenas aventuras lado a lado.</p>
+        </div>
+        <div class="timeline-item" style="animation-delay:0.55s">
+          <div class="timeline-date">Hoje</div>
+          <div class="timeline-title">Feliz Dia dos Namorados 💕</div>
+          <p class="timeline-body">Seguimos de mãos dadas, curiosos por cada página em branco que ainda vamos preencher.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Envelope Section -->
+<section id="carta" class="envelope-section">
+  <div class="container">
+    <span class="section-label reveal">Uma mensagem especial</span>
+    <h2 class="section-title reveal">Uma carta<br><em>para você</em></h2>
+
+    <div class="envelope-scene">
+      <div class="envelope" id="envelope">
+
+        <div class="env-back"></div>
+
+        <div class="env-letter" id="envLetter">
+          <span class="env-letter-heart">♡</span>
+          <div class="env-letter-lines">
+            <div class="env-letter-line"></div>
+            <div class="env-letter-line"></div>
+            <div class="env-letter-line"></div>
+            <div class="env-letter-line"></div>
+          </div>
+          <span class="env-letter-hint">↑ arraste para ler</span>
+        </div>
+
+        <div class="env-inner env-inner--left"></div>
+        <div class="env-inner env-inner--right"></div>
+        <div class="env-inner env-inner--bottom"></div>
+
+        <div class="env-flap" id="envFlap"></div>
+
+        <button class="env-seal" id="envSeal" aria-label="Remover selo e abrir envelope">
+          <img src="images/seal.png" alt="Selo" class="env-seal-img">
+        </button>
+
+      </div>
+      <p class="envelope-tip" id="envelopeTip">Clique no selo para abrir</p>
+    </div>
+  </div>
+</section>
+
+<!-- Quote Section -->
+<section id="mensagem" class="quote-section">
+  <blockquote>Com você, até os dias comuns ganham cor, e os silêncios viram lugar de descanso.</blockquote>
+    <cite>— Com todo o carinho</cite>
+  
+</section>
+
+<!-- Footer -->
+<footer>
+  <span class="footer-heart">💕</span>
+  <p>Feito à mão, com o coração inteiro.</p>
+  <p style="margin-top:0.5rem;font-size:0.78rem;opacity:0.5;">12 de Junho · Dia dos namorados</p>
+</footer>
+
+<!-- Letter Modal -->
+<div class="letter-overlay" id="letterOverlay">
+  <div class="letter-paper">
+    <button class="letter-close" id="letterClose" aria-label="Fechar carta">×</button>
+    <p class="letter-date">12 de junho</p>
+    <h3 class="letter-salutation">Meu amor,</h3>
+    <div class="letter-body">
+      <p>Se eu pudesse guardar um dia num pote,<br>
+      escolheria um qualquer ao seu lado:<br>
+      sem pressa, sem plano, só a gente.</p>
+      <p>Obrigado por cada riso fora de hora,<br>
+      por cada abraço que chega na hora certa<br>
+      e por fazer da rotina um lugar bom de estar.</p>
+      <p>Que venham muitos outros capítulos,<br>
+      todos escritos a quatro mãos.</p>
+    </div>
+    <p class="letter-sign">Sempre seu,<br><em>Alex 💕</em></p>
+  </div>
+</div>
+
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-polaroid">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-caption">
+      <strong class="modal-title" id="modalTitle"></strong>
+      <span class="modal-date" id="modalDate"></span>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
